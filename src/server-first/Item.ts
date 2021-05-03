@@ -1,6 +1,7 @@
 import ItemType from "./ItemType";
 import ItemQuality from "./ItemQuality";
 import SlotType from "./SlotType";
+import StatValue from "./StatValue";
 
 export enum SlotOccupation {
   OneOf = 0,
@@ -9,7 +10,7 @@ export enum SlotOccupation {
 
 export default class Item {
   public shortName:string;
-  constructor(readonly name: string, public possibleSlots: SlotType[], public slotOccupation: SlotOccupation, public quality: ItemQuality, public type: ItemType) {
+  constructor(readonly name: string, public possibleSlots: SlotType[], public slotOccupation: SlotOccupation, public quality: ItemQuality, public type: ItemType, public stats: StatValue[]) {
     const re : RegExp = /\b(\w)/g;
     this.shortName = Array.from(name.matchAll(re)).map(match => {
       return match[1];

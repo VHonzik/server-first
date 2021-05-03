@@ -63,11 +63,16 @@ function Encyclopedia() {
       </dl>
       <h2>Classes</h2>
       <p>Character class is a crucial attribute of a character. Not only it determines which role it will perform in the game but also it's strength and weakness.</p>
-      <p>There are four classes in the game: Mage, Priest, Rogue, Warrior. Following section categorize them by their role and list their characteristics score. For more information about the characteristics, see the TODO ahref Roles section.</p>
+      <p>There are four classes in the game: Mage, Priest, Rogue, Warrior. Following section categorize them by their role and list their characteristic scores. For more information about the characteristics, see the TODO ahref Roles section.</p>
       <h3>DPS</h3>
       <h4>Melee</h4>
       <h5>Rogue</h5>
       Masters of unfair plays and dirty tricks, Rogues excel at sustained single target damage.
+      <h6>Stat priority</h6>
+
+      <p>Agility &gt;&gt; Hit Rating (up to 9.0) &gt;&gt; Critical Rating ~ Strength &gt; Haste &gt; Resistance ~ Armor ~ Stamina</p>
+
+      <h6>Characteristics</h6>
       <ul>
         <li>
         AOE burst -
@@ -106,6 +111,11 @@ function Encyclopedia() {
       <h4>Ranged</h4>
       <h5>Mage</h5>
       Thanks to repertoire of powerful spells mages can hold off hordes on enemies.
+      <h6>Stat priority</h6>
+
+      <p>Intellect &gt;&gt; Hit Rating (up to 16.0) &gt;&gt; Spirit ~ Critical Rating &gt; Haste &gt; &gt; Resistance ~ Armor ~ Stamina</p>
+
+      <h6>Characteristics</h6>
       <ul>
         <li>
         AOE burst ++
