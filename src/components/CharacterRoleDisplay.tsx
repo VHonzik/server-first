@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import CharacterRole from '../server-first/CharacterRole';
 
 type CharacterRoleDisplayProps = {
@@ -6,7 +7,7 @@ type CharacterRoleDisplayProps = {
 
 function CharacterRoleDisplay(props: CharacterRoleDisplayProps) {
   return (
-    <a href={`/encyclopedia/${props.role.encyclopediaRelativePath}`}>{props.role.longName}</a>
+    <Link to={`/encyclopedia/${props.role.encyclopediaRelativePath}`}>{props.role.longName}</Link>
   );
 }
 

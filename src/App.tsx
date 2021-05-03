@@ -1,13 +1,18 @@
-import Encyclopedia from './components/Encyclopedia';
+import { Route } from 'react-router-dom';
+import Encyclopedia from './pages/Encyclopedia';
 import MainMenu from './components/MainMenu'
-import MembersTable from './components/MembersTable';
+import Members from './pages/Members';
 
 function App() {
   return (
     <div>
       <MainMenu />
-      <MembersTable />
-      <Encyclopedia />
+      <Route path='/members'>
+        <Members />
+      </Route>
+      <Route path='/encyclopedia'>
+        <Encyclopedia />
+      </Route>
     </div>
   );
 }

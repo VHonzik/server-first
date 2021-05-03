@@ -1,4 +1,5 @@
-import { assertCharacterClassCanEquipItem } from './Assertions';
+import assert from "assert";
+
 import CharacterClass from './CharacterClass';
 import Inventory from './Inventory';
 import Item from './Item';
@@ -17,7 +18,7 @@ export default class Player {
   }
 
   addItem(slot: SlotType, item: Item) {
-    assertCharacterClassCanEquipItem(this.characterClass, item);
-    this.inventory.addItem(slot, item);
+    assert(this.characterClass.allowedItemTypes.includes(item.type));
+    this.inventory.addItemToSlot(slot, item);
   }
 }

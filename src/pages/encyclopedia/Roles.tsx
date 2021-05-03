@@ -1,9 +1,8 @@
-function Encyclopedia() {
+export default function Roles() {
   return (
     <div>
-      <h1>Encyclopedia</h1>
-      <h2>Roles</h2>
-      <h3>DPS</h3>
+      <h1>Roles</h1>
+      <h2>DPS</h2>
       <p>
         Characters with DPS role, also called damage dealers, specialize in dishing out as much damage as possible. They will be the most numerous role in your dungeons and raid rosters. You will often want to bring as many damage dealers as you can afford.
       </p>
@@ -61,98 +60,6 @@ function Encyclopedia() {
           Measures how much utility the character brings to their fellow players. Not every class can top the damage meters but a DPS with high utility score can boost other characters so much so they are worth much more albeit in limited number. Note that the benefits from one class <i>Utility</i> often do not stack with each other so carefully consider the amount you want to bring.
         </dd>
       </dl>
-      <h2>Classes</h2>
-      <p>Character class is a crucial attribute of a character. Not only it determines which role it will perform in the game but also it's strength and weakness.</p>
-      <p>There are four classes in the game: Mage, Priest, Rogue, Warrior. Following section categorize them by their role and list their characteristic scores. For more information about the characteristics, see the TODO ahref Roles section.</p>
-      <h3>DPS</h3>
-      <h4>Melee</h4>
-      <h5>Rogue</h5>
-      Masters of unfair plays and dirty tricks, Rogues excel at sustained single target damage.
-      <h6>Stat priority</h6>
-
-      <p>Agility &gt;&gt; Hit Rating (up to 9.0) &gt;&gt; Critical Rating ~ Strength &gt; Haste &gt; Resistance ~ Armor ~ Stamina</p>
-
-      <h6>Characteristics</h6>
-      <ul>
-        <li>
-        AOE burst -
-        </li>
-        <li>
-        AOE damage output --
-        </li>
-        <li>
-        Cleave damage output ++
-        </li>
-        <li>
-        Item level scaling +
-        </li>
-        <li>
-        Mobility +
-        </li>
-        <li>
-        Single target burst --
-        </li>
-        <li>
-        Single target damage output +++
-        </li>
-        <li>
-        Survivability ++
-        </li>
-        <li>
-        Sustained damage profile +++
-        </li>
-        <li>
-        Threat management +
-        </li>
-        <li>
-        Utility ---
-        </li>
-      </ul>
-      <h4>Ranged</h4>
-      <h5>Mage</h5>
-      Thanks to repertoire of powerful spells mages can hold off hordes on enemies.
-      <h6>Stat priority</h6>
-
-      <p>Intellect &gt;&gt; Hit Rating (up to 16.0) &gt;&gt; Spirit ~ Critical Rating &gt; Haste &gt; &gt; Resistance ~ Armor ~ Stamina</p>
-
-      <h6>Characteristics</h6>
-      <ul>
-        <li>
-        AOE burst ++
-        </li>
-        <li>
-        AOE damage output +++
-        </li>
-        <li>
-        Cleave damage output -
-        </li>
-        <li>
-        Item level scaling -
-        </li>
-        <li>
-        Mobility ++
-        </li>
-        <li>
-        Single target burst +
-        </li>
-        <li>
-        Single target damage output +
-        </li>
-        <li>
-        Survivability +++
-        </li>
-        <li>
-        Sustained damage profile ---
-        </li>
-        <li>
-        Threat management +
-        </li>
-        <li>
-        Utility +
-        </li>
-      </ul>
     </div>
-  );
+  )
 }
-
-export default Encyclopedia;

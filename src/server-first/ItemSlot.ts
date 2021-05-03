@@ -1,4 +1,4 @@
-import { assertItemFitsItemSlot } from "./Assertions";
+import assert from "assert";
 import Item from "./Item";
 import SlotType from "./SlotType";
 
@@ -9,7 +9,12 @@ export default class ItemSlot {
   }
 
   addItem(item: Item) {
-    assertItemFitsItemSlot(item, this);
+    assert(item.possibleSlots.includes(this.slot));
     this.item = item;
+  }
+
+  removeItem() {
+    assert(this.item !== null, 'Tried to remove item from empty slot.');
+    this.item = null;
   }
 }
