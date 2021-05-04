@@ -1,98 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
+import { Link, Typography } from "@material-ui/core";
+
+import PerformanceMetricsTable from "../../components/PerformanceMetricsTable";
+import CharacterClass from "../../server-first/CharacterClass";
+import InlineStatPriorityDisplay from "../../components/InlineStatPriorityDisplay";
 
 export default function Classes() {
   return (
     <div>
-      <h1>Classes</h1>
-      <p>Character class is a crucial attribute of a character. Not only it determines which <Link to='/encyclopedia/roles'>Role</Link> it will perform in the game but also it's strength and weakness.</p>
-      <p>There are four classes in the game: Mage, Priest, Rogue, Warrior. Following section categorize them by their role and list their characteristic scores. For more information about the characteristics, see the <Link to='/encyclopedia/roles'>Role</Link> section.</p>
-      <h2>DPS</h2>
-      <h3>Melee</h3>
-      <h4>Rogue</h4>
-      Masters of unfair plays and dirty tricks, Rogues excel at sustained single target damage.
-      <h5>Stat priority</h5>
+      <Typography variant="h1" component="h2" gutterBottom>Classes</Typography>
+      <Typography paragraph>Character class is a crucial attribute of a character. Not only it determines which <Link component={RouterLink} to='/encyclopedia/roles'>Role</Link> it will perform in the game but also it's strength and weakness.</Typography>
+      <Typography paragraph>There are four classes in the game: Mage, Priest, Rogue, Warrior. Following section categorize them by their role and list their performance metric scores. For more information about the performance metrics, see the <Link component={RouterLink} to='/encyclopedia/roles'>Roles</Link> section.</Typography>
 
-      <p>Agility &gt;&gt; Hit Rating (up to 9.0) &gt;&gt; Critical Rating ~ Strength &gt; Haste &gt; Resistance ~ Armor ~ Stamina</p>
+      <Typography variant="h2" gutterBottom>DPS</Typography>
 
-      <h5>Characteristics</h5>
-      <ul>
-        <li>
-        AOE burst -
-        </li>
-        <li>
-        AOE damage output --
-        </li>
-        <li>
-        Cleave damage output ++
-        </li>
-        <li>
-        Item level scaling +
-        </li>
-        <li>
-        Mobility +
-        </li>
-        <li>
-        Single target burst --
-        </li>
-        <li>
-        Single target damage output +++
-        </li>
-        <li>
-        Survivability ++
-        </li>
-        <li>
-        Sustained damage profile +++
-        </li>
-        <li>
-        Threat management +
-        </li>
-        <li>
-        Utility ---
-        </li>
-      </ul>
-      <h3>Ranged</h3>
-      <h4>Mage</h4>
-      Thanks to repertoire of powerful spells mages can hold off hordes on enemies.
-      <h5>Stat priority</h5>
+      <Typography variant="h3" gutterBottom>Mage</Typography>
+      <Typography paragraph>Thanks to repertoire of powerful spells mages are ranged DPS class that can hold off hordes on enemies.</Typography>
 
-      <p>Intellect &gt;&gt; Hit Rating (up to 16.0) &gt;&gt; Spirit ~ Critical Rating &gt; Haste &gt; &gt; Resistance ~ Armor ~ Stamina</p>
+      <Typography variant="h4" gutterBottom>Stat priority</Typography>
+      <InlineStatPriorityDisplay priorities={CharacterClass.Mage.statPriorities} />
 
-      <h5>Characteristics</h5>
-      <ul>
-        <li>
-        AOE burst ++
-        </li>
-        <li>
-        AOE damage output +++
-        </li>
-        <li>
-        Cleave damage output -
-        </li>
-        <li>
-        Item level scaling -
-        </li>
-        <li>
-        Mobility ++
-        </li>
-        <li>
-        Single target burst +
-        </li>
-        <li>
-        Single target damage output +
-        </li>
-        <li>
-        Survivability +++
-        </li>
-        <li>
-        Sustained damage profile ---
-        </li>
-        <li>
-        Threat management +
-        </li>
-        <li>
-        Utility +
-        </li>
-      </ul>
+      <Typography variant="h4" gutterBottom>Performance</Typography>
+
+      <PerformanceMetricsTable scores={CharacterClass.Mage.performance} />
+
+      <Typography variant="h3" gutterBottom>Rogue</Typography>
+        <Typography paragraph>Masters of unfair plays and dirty tricks, Rogues are melee class that excels at sustained single target damage.</Typography>
+
+      <Typography variant="h4" gutterBottom>Stat priority</Typography>
+      <InlineStatPriorityDisplay priorities={CharacterClass.Rogue.statPriorities} />
+
+      <Typography variant="h4" gutterBottom>Performance</Typography>
+      <PerformanceMetricsTable scores={CharacterClass.Rogue.performance} />
     </div>
   )
 }

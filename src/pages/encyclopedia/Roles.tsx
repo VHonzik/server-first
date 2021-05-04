@@ -1,17 +1,20 @@
+import Typography from '@material-ui/core/Typography';
+
 export default function Roles() {
   return (
     <div>
-      <h1>Roles</h1>
-      <h2>DPS</h2>
-      <p>
+      <Typography variant="h1" component="h2" gutterBottom>Roles</Typography>
+
+      <Typography variant="h2" gutterBottom>DPS</Typography>
+      <Typography paragraph>
         Characters with DPS role, also called damage dealers, specialize in dishing out as much damage as possible. They will be the most numerous role in your dungeons and raid rosters. You will often want to bring as many damage dealers as you can afford.
-      </p>
-      <p>
+      </Typography>
+      <Typography paragraph>
         Damage dealers can be further divided into two major subgroups: melee and ranged damage dealers. Some encounters will favor one or the other of these subgroups. Melee damage dealers are generally able to do more overall sustained single-target damage and are able to keep dealing damage if their target is moving with the tank. However, their damage output often drops significantly if they cannot be close to their target. Ranged damage dealers often have better damage output in AOE and burst situations. Because they do not have to be next to their target they have an advantage when switching between spread-out targets. Ranged damaged dealers usually suffer in movement heavy encounter and can struggle with sustaining their damage output over long encounters.
-      </p>
-      <p>
-        There are two classes that belong to the DPS role: Mage and Rogue. Different DPS classes will have different strengths and weakness. Therefore no roster will be optimal for all encounters you will face in the game. This game measures damaged dealers performance in different scenarios using following 11 characteristics. The score in them can range from --- (very bad) to +++ (amazing).
-      </p>
+      </Typography>
+      <Typography paragraph>
+        There are two classes that belong to the DPS role: Mage and Rogue. Different DPS classes will have different strengths and weakness. Therefore no roster will be optimal for all encounters you will face in the game. This game measures damaged dealers performance in different scenarios using following 11 performance metrics. The score in them can range from --- (very bad) to +++ (amazing).
+      </Typography>
       <dl>
         <dt>
           <h4>AOE burst</h4>

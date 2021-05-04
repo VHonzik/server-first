@@ -1,25 +1,24 @@
 import { Route } from "react-router";
-import { Link } from "react-router-dom";
+import { Typography, List } from "@material-ui/core";
+
 import Classes from "./encyclopedia/Classes";
 import Roles from "./encyclopedia/Roles";
+import ListItemLink from "../components/UI/ListItemLink";
+
 
 function Encyclopedia() {
   return (
     <div>
-      <h1>Encyclopedia</h1>
+      <Route path='/encyclopedia' exact >
+        <Typography variant="h1" component="h2" gutterBottom>Encyclopedia</Typography>
+        <Typography paragraph>Encyclopedia is a collection of information about this game. Think in-game wikipedia.</Typography>
+        <Typography variant="h2" gutterBottom>Table of Contents</Typography>
 
-      <h2>
-        Table of Contents
-      </h2>
-
-      <ul>
-        <li>
-          <Link to='/encyclopedia/roles'>Roles</Link>
-        </li>
-        <li>
-          <Link to='/encyclopedia/classes'>Classes</Link>
-        </li>
-      </ul>
+        <List>
+          <ListItemLink to="/encyclopedia/roles" primary='Roles' />
+          <ListItemLink to="/encyclopedia/classes" primary='Classes' />
+        </List>
+      </Route>
 
       <Route path='/encyclopedia/roles' >
         <Roles />
