@@ -1,9 +1,12 @@
 import { useState } from 'react';
-import { DataGrid, GridColDef } from '@material-ui/data-grid';
+import { DataGrid, GridCellParams, GridColDef } from '@material-ui/data-grid';
+import { Container } from '@material-ui/core';
+
+import InlineInventory from './InlineInventory';
 
 import Guild from '../server-first/Guild';
-import MembersTableElement from './MembersTableElement';
-import { Container } from '@material-ui/core';
+import Player from '../server-first/Player';
+import Inventory from '../server-first/Inventory';
 
 const columns: GridColDef[] = [
   { field: 'name', headerName: 'Name', width: 200 },
@@ -11,48 +14,32 @@ const columns: GridColDef[] = [
   { field: 'class', headerName: 'Class', width: 120 },
   { field: 'stamina', headerName: 'Stamina', width: 130 },
   { field: 'itemLevel', headerName: 'Item Level', width: 150 },
-  { field: 'items', headerName: 'Items', width: 250 },
+  { field: 'inventory', headerName: 'Items', width: 500, renderCell: (params: GridCellParams) => (
+    <InlineInventory inventory={params.value as Inventory} />
+  )},
 ];
 
-const rows = [
-  { id:0, name: 'Fachatka', role: 'DPS' },
-  { id:1, name: 'Kremilek', role: 'Tank' },
-];
+function playerToRow(player: Player, index: number) {
+  return {
+    id: index, name: player.name, role: player.characterClass.role.longName, class: player.characterClass.longName, stamina: `${player.staminaCurrent}/${player.staminaMax}`, itemLevel: player.itemLevel, inventory: player.inventory
+  };
+}
 
-function guildMembersToTableElement() {
-  return Guild.members.map(member => (
-    <MembersTableElement key={member.name} player={member} />
-  ));
+function guildMembersRows() {
+  return Guild.members.map((member, index) => playerToRow(member, index));
 }
 
 function MembersTable() {
-  const [members, setMembers] = useState(guildMembersToTableElement());
+  const [members, setMembers] = useState(guildMembersRows());
 
   Guild.onMembersChanged.subscribe(() => {
-    setMembers(guildMembersToTableElement());
+    setMembers(guildMembersRows());
   });
 
   return (
-    <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Class</th>
-            <th>Stamina</th>
-            <th>Items</th>
-          </tr>
-        </thead>
-        <tbody>
-        {members}
-        </tbody>
-      </table>
-      <Container style={{height: 600}}>
-        <DataGrid rows={rows} columns={columns} pageSize={5} />
-      </Container>
-
-    </div>
+    <Container style={{height: 600}}>
+      <DataGrid rows={members} columns={columns} pageSize={5} />
+    </Container>
   );
 }
 

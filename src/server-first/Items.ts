@@ -8,7 +8,7 @@ import ItemBinding from './ItemBinding';
 
 // Names
 // Legs: Leggings, Breeches, Loincloth, Pants, Legguards, Woollies, Trousers
-// Leather chest: Vest, Tunic, Harness, Hide
+// Chest: Vest, Tunic, Harness, Hide
 
 
 // Starting gear
@@ -18,3 +18,5 @@ export const ShabbyLegguards = new Item('Shabby Legguards', [SlotType.Legs], Slo
 
 // Sample gear
 export const LeggingsOfLesserHaste = new Item('Leggings of Lesser Haste', [SlotType.Legs], SlotOccupation.OneOf, ItemQuality.Common, ItemType.Leather, createStats({armor: 13, haste: 1}), ItemBinding.BindOnPickup);
+
+export const VestOfLesserCrit = new Item('Vest of Lesser Crit', [SlotType.Chest], SlotOccupation.OneOf, ItemQuality.Uncommon, ItemType.Cloth, createStats({armor: 13, criticalRating: 1}), ItemBinding.BindOnPickup);
