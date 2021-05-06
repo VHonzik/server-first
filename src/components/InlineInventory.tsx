@@ -4,19 +4,24 @@ import ErrorIcon from '@material-ui/icons/Error';
 import InlineItem from "./InlineItem";
 
 import Inventory from "../server-first/Inventory";
+import ItemSlot from '../server-first/ItemSlot';
 
 
 type InlineInventoryProps = {
   inventory: Inventory
 }
 
-const emptySlot = (
-  <Tooltip title='Empty slot'>
-    <Box component="div" color='#555' display="inline" boxShadow={1} p={0.4} m={0.3} bgcolor="background.paper">
-      <ErrorIcon fontSize="small" style={{ verticalAlign: 'middle', paddingBottom: '3px'}} />
-    </Box>
-  </Tooltip>
-)
+
+function emptySlot(itemSlot: ItemSlot) {
+  const tooltipText = `Empty ${itemSlot.slot.longName} slot`;
+  return (
+    <Tooltip title={tooltipText}>
+      <Box component="div" color='#555' display="inline" boxShadow={1} p={0.4} m={0.3} bgcolor="background.paper">
+        <ErrorIcon fontSize="small" style={{ verticalAlign: 'middle', paddingBottom: '3px'}} />
+      </Box>
+    </Tooltip>
+  );
+}
 
 function InlineInventory(props: InlineInventoryProps) {
 
@@ -24,7 +29,7 @@ function InlineInventory(props: InlineInventoryProps) {
     if (itemSlot.item !== null) {
       return (<InlineItem key={itemSlot.slot.name} item={itemSlot.item} />);
     } else {
-      return emptySlot;
+      return emptySlot(itemSlot);
     }
   });
 

@@ -1,4 +1,4 @@
-import { Box, Tooltip, Typography } from '@material-ui/core';
+import { Box, Tooltip } from '@material-ui/core';
 import React from 'react';
 
 import Item from "../server-first/Item";

@@ -10,6 +10,7 @@ class Guild {
     this.members = [
       new Player('Alliances', CharacterClass.Priest, 3),
       new Player('Czekr', CharacterClass.Warrior, 3),
+      new Player('Fachatka', CharacterClass.Mage, 3),
     ];
   }
 

@@ -1,7 +1,6 @@
-import List from "@material-ui/core/List";
-import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Drawer";
+import { Container, List, Drawer, Divider } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from '@material-ui/core';
+import TimeDisplay from "./TimeDisplay";
 
 import ListItemLink from "./UI/ListItemLink";
 
@@ -23,6 +22,7 @@ function MainMenu() {
   const classes = useStyles();
   return (
     <Drawer variant="permanent" anchor="left" className={classes.drawer} classes={{ paper: classes.drawerPaper }}>
+      <TimeDisplay time={new Date()}/>
       <Divider />
       <List>
         <ListItemLink to="/members" primary='Members' />

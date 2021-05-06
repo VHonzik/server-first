@@ -45,8 +45,6 @@ const roguePerformanceMetrics: DPSPerformanceMetricsObject = {
 
 const warriorStatPriority: StatPriority[] = [{ stat: Stat.Stamina, priority: 0 }, { stat: Stat.HitRating, priority: 1, upToValue: 8.0 }, { stat: Stat.Resistance, priority: 2 }, { stat: Stat.Agility, priority: 2 }, { stat: Stat.Armor, priority: 3 }, { stat: Stat.CriticalRating, priority: 4 }, { stat: Stat.Haste, priority: 6 } ];
 
-
-
 export default class CharacterClass {
   public static Mage = new CharacterClass('Mage', CharacterRole.DPS, [...ClothWearer, ...MagicUserWeapons, ItemType.OneHandedSword], mageStatPriority, magePerformanceMetrics);
   public static Priest = new CharacterClass('Priest', CharacterRole.Healer, [...ClothWearer, ...MagicUserWeapons, ItemType.OneHandedMace], priestStatPriority, {});

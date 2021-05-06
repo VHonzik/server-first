@@ -1,4 +1,4 @@
-import { Route } from "react-router";
+import { Route } from "react-router-dom";
 import { Typography, List } from "@material-ui/core";
 
 import Classes from "./encyclopedia/Classes";
