@@ -1,16 +1,15 @@
 import { Box, Tooltip } from '@material-ui/core';
 import React from 'react';
-
-import Item from "../server-first/Item";
+import Item from '../server-first/Item';
 
 type InlineItemProps = {
   item: Item;
 }
 
 export default function InlineItem(props: InlineItemProps) {
-  const {item} = props;
+  const { item } = props;
   const itemStatsTooltip = item.stats.map(statValue => (
-    <Box>{statValue.stat.longName} {statValue.value}</Box>
+    <Box key={statValue.stat.longName}>{statValue.stat.longName} {statValue.value}</Box>
   ));
 
   return (

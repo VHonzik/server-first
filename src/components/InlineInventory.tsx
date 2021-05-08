@@ -15,7 +15,7 @@ type InlineInventoryProps = {
 function emptySlot(itemSlot: ItemSlot) {
   const tooltipText = `Empty ${itemSlot.slot.longName} slot`;
   return (
-    <Tooltip title={tooltipText}>
+    <Tooltip title={tooltipText} key={itemSlot.slot.name}>
       <Box component="div" color='#555' display="inline" boxShadow={1} p={0.4} m={0.3} bgcolor="background.paper">
         <ErrorIcon fontSize="small" style={{ verticalAlign: 'middle', paddingBottom: '3px'}} />
       </Box>
@@ -27,7 +27,7 @@ function InlineInventory(props: InlineInventoryProps) {
 
   const slotsSpans = props.inventory.slots.map(itemSlot => {
     if (itemSlot.item !== null) {
-      return (<InlineItem key={itemSlot.slot.name} item={itemSlot.item} />);
+      return (<InlineItem item={itemSlot.item} key={itemSlot.slot.name}/>);
     } else {
       return emptySlot(itemSlot);
     }
