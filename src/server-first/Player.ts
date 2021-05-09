@@ -11,10 +11,13 @@ export default class Player {
   public staminaCurrent: number;
   public inventory: Inventory = new Inventory();
   public itemLevel: number = 5;
+  public shortName: string;
 
   constructor(public name: string, public characterClass: CharacterClass, stamina:number) {
     this.staminaMax = stamina;
     this.staminaCurrent = this.staminaMax;
+    this.shortName = name.substr(0, 2).toUpperCase();
+
     this.addItem(SlotType.Legs, ShabbyPants);
     this.addItem(SlotType.Chest, VestOfLesserCrit);
   }

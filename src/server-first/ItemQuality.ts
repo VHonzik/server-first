@@ -1,12 +1,12 @@
 export default class ItemQuality {
 
-  public static Poor = new ItemQuality('#aaaaaa');
-  public static Common = new ItemQuality('#ffffff');
-  public static Uncommon = new ItemQuality('#1eff00');
-  public static Rare = new ItemQuality('#0070dd');
-  public static Epic = new ItemQuality('#9345ff');
-  public static Legendary = new ItemQuality('#ff8000');
+  public static Poor = new ItemQuality('poorItemQuality');
+  public static Common = new ItemQuality('commonItemQuality');
+  public static Uncommon = new ItemQuality('uncommonItemQuality');
+  public static Rare = new ItemQuality('rareItemQuality');
+  public static Epic = new ItemQuality('epicItemQuality');
+  public static Legendary = new ItemQuality('legendaryItemQuality');
 
-  private constructor(public color:string) {
+  private constructor(public paletteColor:string) {
   }
 }

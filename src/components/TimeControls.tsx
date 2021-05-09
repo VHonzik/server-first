@@ -2,6 +2,7 @@ import { Box, Container, SvgIcon } from "@material-ui/core";
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import FastForwardIcon from '@material-ui/icons/FastForward';
+import { useTheme } from '@material-ui/core/styles';
 
 import TimeFlow from "../server-first/TimeFlow";
 import GameTime from "../server-first/GameTime";
@@ -20,21 +21,26 @@ function setGameTimeFlow(flow: TimeFlow) {
 }
 
 export default function TimeControls() {
+  const theme = useTheme();
+
   const [timeFlow, setTimeFlow] = useState<TimeFlow>(GameTime.flow);
 
   GameTime.onFlowChanged.subscribe(() => {
     setTimeFlow(GameTime.flow);
   });
 
+  const disabledFlowingColor = theme.palette.timeFlowing[theme.palette.type];
+  const disabledStoppedColor = theme.palette.timeStopped[theme.palette.type];
+
   return (
     <Container>
       <Box m={1} display="flex" justifyContent="center">
-        <TimeControl icon={(<PlayArrowIcon />)} disabled={timeFlow === TimeFlow.Normal} label='Resume' disabledColor='#388e3c' onClick={() => setGameTimeFlow(TimeFlow.Normal)} />
-        <TimeControl icon={(<PauseIcon />)} disabled={timeFlow === TimeFlow.Stopped} label='Pause' disabledColor='#f57c00' onClick={() => setGameTimeFlow(TimeFlow.Stopped)}  />
+        <TimeControl icon={(<PlayArrowIcon />)} disabled={timeFlow === TimeFlow.Normal} label='Resume' disabledColor={disabledFlowingColor} onClick={() => setGameTimeFlow(TimeFlow.Normal)} />
+        <TimeControl icon={(<PauseIcon />)} disabled={timeFlow === TimeFlow.Stopped} label='Pause' disabledColor={disabledStoppedColor} onClick={() => setGameTimeFlow(TimeFlow.Stopped)}  />
       </Box>
       <Box m={1} display="flex" justifyContent="center">
-        <TimeControl icon={(<FastForwardIcon />)} disabled={timeFlow === TimeFlow.Fast} label='Fast' disabledColor='#388e3c' onClick={() => setGameTimeFlow(TimeFlow.Fast)}  />
-        <TimeControl icon={SuperFastIcon} disabled={timeFlow === TimeFlow.SuperFast} label='Super Fast' disabledColor='#388e3c' onClick={() => setGameTimeFlow(TimeFlow.SuperFast)}  />
+        <TimeControl icon={(<FastForwardIcon />)} disabled={timeFlow === TimeFlow.Fast} label='Fast' disabledColor={disabledFlowingColor} onClick={() => setGameTimeFlow(TimeFlow.Fast)}  />
+        <TimeControl icon={SuperFastIcon} disabled={timeFlow === TimeFlow.SuperFast} label='Super Fast' disabledColor={disabledFlowingColor} onClick={() => setGameTimeFlow(TimeFlow.SuperFast)}  />
       </Box>
     </Container>
   );

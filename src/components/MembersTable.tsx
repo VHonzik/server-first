@@ -10,9 +10,13 @@ import Inventory from '../server-first/Inventory';
 import { ClassToKeyword, RoleToKeyword } from './Keywords';
 import CharacterClass from '../server-first/CharacterClass';
 import CharacterRole from '../server-first/CharacterRole';
+import PlayerBadge from './PlayerBadge';
 
 const columns: GridColDef[] = [
-  { field: 'name', headerName: 'Name', width: 200 },
+  { field: 'badge', headerName: 'Icon', width: 80, renderCell: (params: GridCellParams) => {
+    return (<PlayerBadge player={params.value as Player} />);
+  }},
+  { field: 'name', headerName: 'Name', width: 150 },
   { field: 'role', headerName: 'Role', width: 110, renderCell: (params: GridCellParams) => {
     return RoleToKeyword(params.value as CharacterRole);
   }},
@@ -20,7 +24,7 @@ const columns: GridColDef[] = [
     return ClassToKeyword(params.value as CharacterClass);
   }},
   { field: 'stamina', headerName: 'Stamina', width: 130 },
-  { field: 'itemLevel', headerName: 'Item Level', width: 150 },
+  { field: 'itemLevel', headerName: 'Item Level', width: 120 },
   { field: 'inventory', headerName: 'Items', width: 500, renderCell: (params: GridCellParams) => (
     <InlineInventory inventory={params.value as Inventory} />
   )},
@@ -28,7 +32,7 @@ const columns: GridColDef[] = [
 
 function playerToRow(player: Player, index: number) {
   return {
-    id: index, name: player.name, role: player.characterClass.role, class: player.characterClass, stamina: `${player.staminaCurrent}/${player.staminaMax}`, itemLevel: player.itemLevel, inventory: player.inventory
+    id: index, badge: player, name: player.name, role: player.characterClass.role, class: player.characterClass, stamina: `${player.staminaCurrent}/${player.staminaMax}`, itemLevel: player.itemLevel, inventory: player.inventory
   };
 }
 
