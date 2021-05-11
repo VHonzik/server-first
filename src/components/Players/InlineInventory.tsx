@@ -3,8 +3,8 @@ import ErrorIcon from '@material-ui/icons/Error';
 
 import InlineItem from "./InlineItem";
 
-import Inventory from "../server-first/Inventory";
-import ItemSlot from '../server-first/ItemSlot';
+import Inventory from "../../server-first/Inventory";
+import ItemSlot from '../../server-first/ItemSlot';
 
 
 type InlineInventoryProps = {

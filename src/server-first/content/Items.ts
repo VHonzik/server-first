@@ -1,9 +1,9 @@
-import Item, { SlotOccupation } from './Item'
-import ItemType from './ItemType';
-import ItemQuality from './ItemQuality';
-import SlotType from './SlotType'
-import { createStats } from './StatValue';
-import ItemBinding from './ItemBinding';
+import Item, { SlotOccupation } from '../Item'
+import ItemType from '../ItemType';
+import ItemQuality from '../ItemQuality';
+import SlotType from '../SlotType'
+import { createStats } from '../StatValue';
+import ItemBinding from '../ItemBinding';
 
 
 // Names

@@ -1,6 +1,6 @@
 import { Typography, SvgIcon } from "@material-ui/core";
 import React from "react";
-import { StatPriority } from "../server-first/CharacterClass";
+import { StatPriority } from "../../server-first/CharacterClass";
 
 type InlineStatPriorityDisplayProps = {
   priorities: StatPriority[]

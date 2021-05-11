@@ -3,7 +3,7 @@ import assert from "assert";
 import CharacterClass from './CharacterClass';
 import Inventory from './Inventory';
 import Item from './Item';
-import { ShabbyPants, VestOfLesserCrit } from './Items';
+import { ShabbyPants, VestOfLesserCrit } from './content/Items';
 import SlotType from './SlotType';
 
 export default class Player {

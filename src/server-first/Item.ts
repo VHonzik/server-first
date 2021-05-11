@@ -3,6 +3,7 @@ import ItemQuality from "./ItemQuality";
 import SlotType from "./SlotType";
 import StatValue from "./StatValue";
 import ItemBinding from "./ItemBinding";
+import { shortName } from "./Utils";
 
 export enum SlotOccupation {
   OneOf = 0,
@@ -12,9 +13,6 @@ export enum SlotOccupation {
 export default class Item {
   public shortName:string;
   constructor(readonly name: string, public possibleSlots: SlotType[], public slotOccupation: SlotOccupation, public quality: ItemQuality, public type: ItemType, public stats: StatValue[], public binding: ItemBinding) {
-    const re : RegExp = /\b(\w)/g;
-    this.shortName = Array.from(name.matchAll(re)).map(match => {
-      return match[1];
-    }).join('');
+    this.shortName = shortName(name);
   }
 }

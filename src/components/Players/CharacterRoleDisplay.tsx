@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import CharacterRole from '../server-first/CharacterRole';
+import CharacterRole from '../../server-first/CharacterRole';
 
 type CharacterRoleDisplayProps = {
   role: CharacterRole

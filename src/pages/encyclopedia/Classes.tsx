@@ -1,9 +1,9 @@
 import {  Typography } from "@material-ui/core";
 
-import PerformanceMetricsTable from "../../components/PerformanceMetricsTable";
+import PerformanceMetricsTable from "../../components/Players/PerformanceMetricsTable";
 import { MageKeyword, PriestKeyword, RogueKeyword, WarriorKeyword, RoleKeyword, DPSKeyword } from "../../components/Keywords";
 import CharacterClass from "../../server-first/CharacterClass";
-import InlineStatPriorityDisplay from "../../components/InlineStatPriorityDisplay";
+import InlineStatPriorityDisplay from "../../components/Players/InlineStatPriorityDisplay";
 
 export default function Classes() {
   return (

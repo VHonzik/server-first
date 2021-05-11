@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { DataGrid, GridCellParams, GridColDef } from '@material-ui/data-grid';
 import { Container } from '@material-ui/core';
 
-import InlineInventory from './InlineInventory';
+import InlineInventory from './Players/InlineInventory';
 
 import Guild from '../server-first/Guild';
 import Player from '../server-first/Player';
@@ -10,7 +10,7 @@ import Inventory from '../server-first/Inventory';
 import { ClassToKeyword, RoleToKeyword } from './Keywords';
 import CharacterClass from '../server-first/CharacterClass';
 import CharacterRole from '../server-first/CharacterRole';
-import PlayerBadge from './PlayerBadge';
+import PlayerBadge from './Players/PlayerBadge';
 
 const columns: GridColDef[] = [
   { field: 'badge', headerName: 'Icon', width: 80, renderCell: (params: GridCellParams) => {

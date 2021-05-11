@@ -2,24 +2,36 @@ import { ISignal, SignalDispatcher } from "strongly-typed-events";
 
 import TimeFlow from "./TimeFlow";
 
+type TimeCallback = {
+  time: Date,
+  callback: (this: void) => void
+}
+
+function TimeCallbackReverseComparison(timeCallbackA: TimeCallback, timeCallbackB: TimeCallback) : number {
+  const diff = timeCallbackB.time.getTime() - timeCallbackA.time.getTime();
+  return Math.sign(diff);
+}
+
 class GameTime {
+  public time: Date = new Date();
+
   private onTimeChangedSignal = new SignalDispatcher();
-  private onTimeChangedLiteSignal = new SignalDispatcher();
   private onFlowChangedSignal = new SignalDispatcher();
 
   private timeFlow: TimeFlow = TimeFlow.Stopped;
-  public time: Date = new Date();
 
   private inverseFrameRate: number = 1.0 / 30.0;
   private maximalSimulationUnit: number = 1.0;
   private lastFrameSimulationTime: number = Date.now();
 
-  public get onTimeChanged():ISignal {
-    return this.onTimeChangedSignal.asEvent();
+  private timeCallbacks: Array<TimeCallback> = [];
+
+  public constructor() {
+    setInterval(() => this.update(), this.inverseFrameRate * 1000.0);
   }
 
-  public get onTimeChangedLite():ISignal {
-    return this.onTimeChangedLiteSignal.asEvent();
+  public get onTimeChanged():ISignal {
+    return this.onTimeChangedSignal.asEvent();
   }
 
   public get onFlowChanged():ISignal {
@@ -39,7 +51,6 @@ class GameTime {
 
   public simulate(delta: number) {
     this.time.setSeconds(this.time.getSeconds() + delta);
-    this.onTimeChangedSignal.dispatch();
   }
 
   public update() {
@@ -56,16 +67,30 @@ class GameTime {
       if (changeGameTime > 0.0) {
         this.simulate(changeGameTime);
       }
-      this.onTimeChangedLiteSignal.dispatch();
+      this.onTimeChangedSignal.dispatch();
+
+      this.evaluateTimeCallbacks();
     }
 
     this.lastFrameSimulationTime = nowSimulationTime;
   }
 
-  public constructor() {
-    setInterval(() => this.update(), this.inverseFrameRate * 1000.0);
+  public registerCallback(triggerTime: Date, callback: (this: void) => void) {
+    this.timeCallbacks.push({ time: triggerTime, callback: callback });
+    this.timeCallbacks.sort(TimeCallbackReverseComparison);
   }
 
+  private evaluateTimeCallbacks() {
+    for (let index = this.timeCallbacks.length - 1; index >= 0; index--) {
+      let currentCallback = this.timeCallbacks[index];
+      if (currentCallback.time <= this.time) {
+        currentCallback.callback();
+        this.timeCallbacks.pop();
+      } else {
+        break;
+      }
+    }
+  }
 }
 
 export default new GameTime();

@@ -4,8 +4,8 @@ import PauseIcon from '@material-ui/icons/Pause';
 import FastForwardIcon from '@material-ui/icons/FastForward';
 import { useTheme } from '@material-ui/core/styles';
 
-import TimeFlow from "../server-first/TimeFlow";
-import GameTime from "../server-first/GameTime";
+import TimeFlow from "../../server-first/TimeFlow";
+import GameTime from "../../server-first/GameTime";
 import { useState } from "react";
 import TimeControl from "./TimeControl";
 

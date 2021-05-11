@@ -9,7 +9,7 @@ import { Container, makeStyles } from '@material-ui/core';
 import { green, red } from '@material-ui/core/colors';
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from '@material-ui/icons/Remove';
-import ClassPerformanceMetric, { PerformanceMetricsObject, PerformanceMetricScore } from '../server-first/ClassPerformanceMetric';
+import ClassPerformanceMetric, { PerformanceMetricsObject, PerformanceMetricScore } from '../../server-first/ClassPerformanceMetric';
 
 type PerformanceMetricsTableProps = {
   scores: PerformanceMetricsObject

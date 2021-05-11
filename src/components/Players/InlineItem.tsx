@@ -1,6 +1,7 @@
 import { Box, Tooltip, useTheme } from '@material-ui/core';
 import React from 'react';
-import Item from '../server-first/Item';
+import Item from '../../server-first/Item';
+import { ItemQualityToColorString } from '../../styles/theme';
 
 type InlineItemProps = {
   item: Item;
@@ -14,7 +15,7 @@ export default function InlineItem(props: InlineItemProps) {
     <Box key={statValue.stat.longName}>{statValue.stat.longName} {statValue.value}</Box>
   ));
 
-  const qualityColor = `${item.quality.paletteColor}.${theme.palette.type}`;
+  const qualityColor = ItemQualityToColorString(item.quality, theme);
 
   return (
     <Tooltip title={
@@ -26,5 +27,5 @@ export default function InlineItem(props: InlineItemProps) {
         {item.shortName}
         </Box>
     </Tooltip>
-  );
+  )
 }

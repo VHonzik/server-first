@@ -1,5 +1,5 @@
 import CharacterClass from "../server-first/CharacterClass";
-import InlineKeyword from "./UI/InlineKeyword";
+import InlineKeyword from "./InlineKeyword";
 
 import assert from "assert";
 import CharacterRole from "../server-first/CharacterRole";

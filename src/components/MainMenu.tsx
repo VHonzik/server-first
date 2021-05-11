@@ -1,8 +1,8 @@
 import { List, Drawer, Divider } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from '@material-ui/core';
 
-import TimeControls from "./TimeControls";
-import TimeDisplay from "./TimeDisplay";
+import TimeControls from "./Time/TimeControls";
+import TimeDisplay from "./Time/TimeDisplay";
 
 import ListItemLink from "./UI/ListItemLink";
 
@@ -29,6 +29,7 @@ function MainMenu() {
       <Divider />
       <List>
         <ListItemLink to="/members" primary='Members' />
+        <ListItemLink to="/runs" primary='Runs' />
         <ListItemLink to="/dungeons" primary='Dungeons' />
         <ListItemLink to="/raids" primary='Raids' />
         <ListItemLink to="/encyclopedia" primary='Encyclopedia' />

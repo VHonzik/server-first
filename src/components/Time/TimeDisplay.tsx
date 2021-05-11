@@ -1,6 +1,6 @@
 import { Box, Container, Typography } from "@material-ui/core";
 import { useState } from "react";
-import GameTime from "../server-first/GameTime";
+import GameTime from "../../server-first/GameTime";
 
 function ordinalEnding(day: number) {
   const lastDigit = day.toString().split('').pop();
@@ -30,7 +30,7 @@ export default function TimeDisplay() {
 
   const [time, setTime] = useState(getTime(GameTime.time));
 
-  GameTime.onTimeChangedLite.subscribe(() => {
+  GameTime.onTimeChanged.subscribe(() => {
     setTime(getTime(GameTime.time));
   });
 
