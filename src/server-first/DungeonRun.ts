@@ -1,5 +1,6 @@
 import Dungeon from "./Dungeon";
 import GameTime from "./GameTime";
+import { clamp } from "./Utils";
 
 export default class DungeonRun {
   public startTime: Date;
@@ -15,5 +16,17 @@ export default class DungeonRun {
 
   public runFinished() {
     this.finished = true;
+  }
+
+  public getProgress() : number {
+    if (this.finished) {
+      return 1.0;
+    }
+
+    const start = this.startTime.getTime();
+    const end = this.endTime.getTime();
+
+    const clampedTime = clamp(GameTime.time.getTime(), start, end);
+    return (clampedTime - start) / (end - start);
   }
 }

@@ -1,25 +1,22 @@
-import { Box, Container, Divider, List, ListItem, ListItemText, Typography } from "@material-ui/core";
+import { Box, Container, Divider, List, Typography } from "@material-ui/core";
 import { useState } from "react";
+import DungeonRunListItem from "../components/Dungeons/DungeonRunListItem";
 import DungeonRun from "../server-first/DungeonRun";
 import Guild from "../server-first/Guild";
 
-function dungeonRunsToElements(runs: DungeonRun[], text: string) {
+function dungeonRunsToElements(runs: DungeonRun[]) {
   return runs.map(dungeonRun => (
-    <ListItem key={dungeonRun.startTime.toString()}>
-      <ListItemText>
-        {dungeonRun.dungeon.longName} - {text} {dungeonRun.endTime.toUTCString()}
-      </ListItemText>
-    </ListItem>
+    <DungeonRunListItem dungeonRun={dungeonRun} key={dungeonRun.startTime.toISOString()}/>
   ));
 }
 
 export default function Runs() {
-  const [finishedRuns, setFinishedRuns] = useState(dungeonRunsToElements(Guild.finishedRuns, 'finished'));
-  const [ongoingRuns, setOngoingRuns] = useState(dungeonRunsToElements(Guild.ongoingRuns, 'ends'));
+  const [finishedRuns, setFinishedRuns] = useState(dungeonRunsToElements(Guild.finishedRuns));
+  const [ongoingRuns, setOngoingRuns] = useState(dungeonRunsToElements(Guild.ongoingRuns));
 
   Guild.onDungeonRunsChanged.subscribe(() => {
-    setFinishedRuns(dungeonRunsToElements(Guild.finishedRuns, 'finished'));
-    setOngoingRuns(dungeonRunsToElements(Guild.ongoingRuns, 'ends'));
+    setFinishedRuns(dungeonRunsToElements(Guild.finishedRuns));
+    setOngoingRuns(dungeonRunsToElements(Guild.ongoingRuns));
   });
 
   return (
