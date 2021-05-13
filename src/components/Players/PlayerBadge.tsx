@@ -5,7 +5,8 @@ import Player from "../../server-first/Player";
 import { CharacterClassToColor } from '../../styles/theme';
 
 type PlayerBadgeProps = {
-  player: Player
+  player: Player,
+  showStatus?: boolean;
 };
 
 type PlayerBadgeCssProps = {
@@ -41,10 +42,16 @@ export default function PlayerBadge(props: PlayerBadgeProps) {
 
   const classes = useStyles({color: characterClassColor});
 
-  return (
+  const avatar = <Avatar className={classes.avatar}>{player.shortName}</Avatar>;
+  let badge = (
     <Badge classes={{badge: classes.badge}} overlap='circle' variant='dot' anchorOrigin={{vertical: 'bottom', horizontal: 'right'}} >
       <Avatar className={classes.avatar}>{player.shortName}</Avatar>
     </Badge>
+  );
 
-  )
+  if (props.showStatus !== undefined && props.showStatus === false) {
+    badge = avatar;
+  }
+
+  return badge;
 }

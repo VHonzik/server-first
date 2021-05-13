@@ -18,6 +18,8 @@ class Guild {
       new Player('Alliances', CharacterClass.Priest, 3),
       new Player('Czekr', CharacterClass.Warrior, 3),
       new Player('Fachatka', CharacterClass.Mage, 3),
+      new Player('Zrzek', CharacterClass.Rogue, 3),
+      new Player('Utatis', CharacterClass.Rogue, 3),
     ];
 
     this.startDungeonRun(HiddenAlcovesOfKirene);
@@ -37,7 +39,7 @@ class Guild {
   }
 
   public startDungeonRun(dungeon: Dungeon) {
-    const run = new DungeonRun(dungeon);
+    const run = new DungeonRun(dungeon, this.members);
     this.ongoingRuns.push(run);
     GameTime.registerCallback(run.endTime, () => {
       this.dungeonRunFinished(run);
